@@ -868,6 +868,7 @@ QStatusBar QLabel {
 
     .QListView::item { /* Transaction List */
         padding: 10px;
+	background-color: transparent;
     }
 
 
