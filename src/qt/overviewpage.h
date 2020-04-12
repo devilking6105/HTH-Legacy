@@ -74,7 +74,7 @@ private Q_SLOTS:
     void updatePrivateSendProgress();
     void updateAdvancedPSUI(bool fShowAdvancedPSUI);
     void handleTransactionClicked(const QModelIndex &index);
-    void updateAlerts(const QString &warnings);
+    /*void updateAlerts(const QString &warnings);*/
     void updateWatchOnlyLabels(bool showWatchOnly);
 };
 
