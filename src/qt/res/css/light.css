@@ -1674,3 +1674,25 @@ background-color:#F8F6F6;
 QDialog#TransactionDescDialog QTextEdit { /* Contents of Receive Coin Dialog */
 border:1px solid #d7d7d7;
 }
+
+
+
+
+/**** HTH Buttons *****/
+
+.QPushButton#pushButton_Website {
+	
+              onClicked: {
+            Qt.openUrlExternally("https://helpthehomelessworldwide.org/");
+              }
+	
+          }
+
+.QPushButton#pushButton_Website_1 {
+	
+              onClicked: {
+            Qt.openUrlExternally("https://hth.world/");
+              }
+	
+          }
+/***** End HTH Buttons *****/
