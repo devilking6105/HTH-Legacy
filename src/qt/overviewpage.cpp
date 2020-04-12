@@ -678,7 +678,7 @@ void OverviewPage::DisablePrivateSendCompletely() {
     fEnablePrivateSend = false;
 }
 
-/*** HTH Logo Buttons ****/
+/*** HTH Logo Buttons
 
 
 void QPushButton::on_pushButton_Website_clicked()
