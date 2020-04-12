@@ -2134,3 +2134,11 @@ QStatusBar QLabel {
               }
 	
           }
+
+.QPushButton#pushButton_Website_1 {
+	
+              onClicked: {
+            Qt.openUrlExternally("https://hth.world/");
+              }
+	
+          }
