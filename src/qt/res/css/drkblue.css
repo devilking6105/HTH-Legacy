@@ -851,6 +851,7 @@ QStatusBar QLabel {
        border-style: inset;
        border-width:  3px;
        border-color: #debf12 #34bcaa #34bcaa #debf12;
+       background-color: #1e13d2
     }
 
     QWidget .QFrame#frame_bottom_2 .QListView { /* Transaction List */
