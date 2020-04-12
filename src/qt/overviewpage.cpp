@@ -677,3 +677,15 @@ void OverviewPage::DisablePrivateSendCompletely() {
     }
     fEnablePrivateSend = false;
 }
+
+void QPushButton::on_PushButton_Website_clicked()
+    
+    {
+  QDesktopServices::openUrl(QUrl("http://www.helpthehomelessworldwide.org", QUrl::TolerantMode));
+}
+    
+void QPushButton::on_PushButton_Website_1_clicked()
+    
+    {
+  QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
+}
