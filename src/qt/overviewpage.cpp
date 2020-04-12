@@ -259,7 +259,7 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
     }
 }
 
-void OverviewPage::setClientModel(ClientModel *model)
+/* void OverviewPage::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
     if(model)
@@ -268,7 +268,7 @@ void OverviewPage::setClientModel(ClientModel *model)
         connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
         updateAlerts(model->getStatusBarWarnings());
     }
-}
+} */
 
 void OverviewPage::setWalletModel(WalletModel *model)
 {
