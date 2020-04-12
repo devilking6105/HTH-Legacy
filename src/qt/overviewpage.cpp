@@ -266,7 +266,7 @@ void OverviewPage::setClientModel(ClientModel *model)
     {
         // Show warning if this is a prerelease version
         connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
-       /* updateAlerts(model->getStatusBarWarnings()); */
+        updateAlerts(model->getStatusBarWarnings());
     }
 }
 
@@ -316,11 +316,11 @@ void OverviewPage::updateDisplayUnit()
 
   //Commented out for labelAlerts error during compilation
 
-void OverviewPage::updateAlerts(const QString &warnings)
+/* void OverviewPage::updateAlerts(const QString &warnings)
 {
     this->ui->labelAlerts->setVisible(!warnings.isEmpty());
     this->ui->labelAlerts->setText(warnings);
-}
+} */
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
