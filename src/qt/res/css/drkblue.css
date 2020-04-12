@@ -862,7 +862,6 @@ QStatusBar QLabel {
         padding: 0px;
         padding-top: 4px;
         background-color: transparent;
-        alternate-background-color:  transparent;
         border: 0px solid;
     }
 
