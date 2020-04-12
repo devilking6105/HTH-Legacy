@@ -714,7 +714,7 @@
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-               <widget class="QPushButton" name="framePrivateSend">
+               <widget class="QPushButton" name="togglePrivateSend_2">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
