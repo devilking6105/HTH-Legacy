@@ -9,7 +9,7 @@
 
 #include <QWidget>
 #include <QUrl>
-#include <QDesktop>
+#include <QDesktopServices>
 
 class ClientModel;
 class TransactionFilterProxy;
