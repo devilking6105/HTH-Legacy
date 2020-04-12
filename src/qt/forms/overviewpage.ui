@@ -513,10 +513,10 @@
                </rect>
               </property>
                <property name="toolTip">
-               <string>Visit Help The Homeless Worldwide A NJ Nonprofit Corporation</string>
+               <string>Visit Help The Homeless Coin Website</string>
               </property>
               <property name="styleSheet">
-               <string notr="true">&lt;a href=&quot;https://www.helpthehomelessworldwide.org&quot;&gt;&lt;/a&gt;</string>
+               <string notr="true">&lt;a href=&quot;https://hth.world&quot;&gt;&lt;/a&gt;</string>
               </property>
               <property name="text">
                <string>HTH Coin</string>
