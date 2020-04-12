@@ -316,11 +316,11 @@ void OverviewPage::updateDisplayUnit()
 
   //Commented out for labelAlerts error during compilation
 
-/* void OverviewPage::updateAlerts(const QString &warnings)
+ void OverviewPage::updateAlerts(const QString &warnings)
 {
-    this->ui->labelAlerts->setVisible(!warnings.isEmpty());
-    this->ui->labelAlerts->setText(warnings);
-} */
+   /* this->ui->labelAlerts->setVisible(!warnings.isEmpty());
+    this->ui->labelAlerts->setText(warnings); */
+} 
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
