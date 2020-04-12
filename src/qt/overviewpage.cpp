@@ -259,7 +259,7 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
     }
 }
 
-/* void OverviewPage::setClientModel(ClientModel *model)
+void OverviewPage::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
     if(model)
@@ -268,7 +268,7 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
         connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
         updateAlerts(model->getStatusBarWarnings());
     }
-} */
+}
 
 void OverviewPage::setWalletModel(WalletModel *model)
 {
@@ -314,15 +314,13 @@ void OverviewPage::updateDisplayUnit()
     }
 }
 
-/*  Commented out for labelAlerts error during compilation
+  //Commented out for labelAlerts error during compilation
 
 void OverviewPage::updateAlerts(const QString &warnings)
 {
     this->ui->labelAlerts->setVisible(!warnings.isEmpty());
     this->ui->labelAlerts->setText(warnings);
-} 
-
-*/
+}
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
