@@ -680,14 +680,14 @@ void OverviewPage::DisablePrivateSendCompletely() {
     fEnablePrivateSend = false;
 }
 
-/*** HTH Logo Buttons ***/
+/*** HTH Logo Buttons
 
-void OverviewPage::on_pushButton_Website_clicked()
+void QPushButton::on_pushButton_Website_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://helpthehomelessworldwide.org", QUrl::TolerantMode));
 }
 
-void OverviewPage::on_pushButton_Website_1_clicked()
+void QPushButton::on_pushButton_Website_1_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
 }
