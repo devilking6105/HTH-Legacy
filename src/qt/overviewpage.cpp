@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QDesktop>
 
 #define ICON_OFFSET 16
 #define DECORATION_SIZE 54
@@ -678,7 +679,7 @@ void OverviewPage::DisablePrivateSendCompletely() {
     fEnablePrivateSend = false;
 }
 
-/*** HTH Logo Buttons
+/*** HTH Logo Buttons ****/
 
 void QPushButton::on_pushButton_Website_clicked()
 {
