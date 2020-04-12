@@ -8,6 +8,8 @@
 #include "amount.h"
 
 #include <QWidget>
+#include <QUrl>
+#include <QDesktop>
 
 class ClientModel;
 class TransactionFilterProxy;
