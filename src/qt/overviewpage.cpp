@@ -680,9 +680,6 @@ void OverviewPage::DisablePrivateSendCompletely() {
 
 /*** HTH Logo Buttons ****/
 
-QPushButton button = new QPushButton_Website();
-
-QPushButton button = new QPushButton_Website_1();
 
 void QPushButton::on_pushButton_Website_clicked()
 {
