@@ -680,6 +680,17 @@ void OverviewPage::DisablePrivateSendCompletely() {
 
 /*** HTH Logo Buttons ***/
 
+void QPushButton::on_inscriptionPushButton_clicked()
+{
+  QDesktopServices::openUrl(QUrl("https://www.helpthehomelessworldwide.org", QUrl::TolerantMode));
+}
+
+void QPushButton::on_inscriptionPushButtonA_clicked()
+{
+  QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
+}
+
+/*** Old Code
 void QPushButton::on_pushButton_Website_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://helpthehomelessworldwide.org", QUrl::TolerantMode));
@@ -692,6 +703,6 @@ void QPushButton::on_pushButton_Website_1_clicked()
   QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
      this->setFlat(true);
     connect(this, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
-}
+} ****/ //End Old Code
 
 /*** End HTH Logo ***/
