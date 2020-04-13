@@ -14,9 +14,9 @@ QMainWindow {
 
     }
 
-        /****  If You Want Logo In Buttons Area  ******   //Add / here for comment stop
+        /****  If You Want Logo In Buttons Area  ******/
 
-      QWidget .QFrame#frame_2 { /*blue frame */
+      QWidget .QFrame#frame_3 { /*blue frame */
 
       	border-image: url(':/images/light/hth_logo_horizontal') 160 80 stretch stretch;;
         border-style: none;
