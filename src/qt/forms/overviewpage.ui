@@ -484,7 +484,7 @@
                <height>140</height>
               </size>
              </property>
-             <widget class="QPushButton" name="pushButtonWebsite">
+             <widget class="QPushButton" name="pushButton_Website">
               <property name="geometry">
                <rect>
                 <x>180</x>
@@ -503,7 +503,7 @@
                <string>HTH Worldwide</string>
               </property>
              </widget>
-             <widget class="QPushButton" name="pushButtonWebsiteA">
+             <widget class="QPushButton" name="pushButton_Website_1">
               <property name="geometry">
                <rect>
                 <x>14</x>
