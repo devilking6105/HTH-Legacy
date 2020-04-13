@@ -6,6 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "bitcoingui.h"
+#include "pushbutton.h"
 
 #include "bitcoinunits.h"
 #include "clientmodel.h"
