@@ -489,8 +489,8 @@
                <rect>
                 <x>120</x>
                 <y>70</y>
-                <width>91</width>
-                <height>41</height>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
               <property name="toolTip">
@@ -508,8 +508,8 @@
                <rect>
                 <x>10</x>
                 <y>0</y>
-                <width>91</width>
-                <height>41</height>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
               <property name="text">
@@ -521,8 +521,8 @@
                <rect>
                 <x>230</x>
                 <y>140</y>
-                <width>91</width>
-                <height>41</height>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
               <property name="text">
@@ -534,8 +534,8 @@
                <rect>
                 <x>230</x>
                 <y>0</y>
-                <width>91</width>
-                <height>41</height>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
               <property name="text">
@@ -547,12 +547,12 @@
                <rect>
                 <x>10</x>
                 <y>140</y>
-                <width>91</width>
-                <height>41</height>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
               <property name="text">
-               <string>HTH Pools</string>
+               <string>HTH Partners</string>
               </property>
              </widget>
             </widget>
