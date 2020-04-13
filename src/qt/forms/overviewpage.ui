@@ -955,8 +955,14 @@ background-color: transparent;</string>
          <height>40</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Visit HTH Partners and Donate Today!!!!!!!!</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">&lt;a href=&quot;https://hth.world/partners.html&quot;&gt;&lt;/a&gt;</string>
+       </property>
        <property name="text">
-        <string>HTH Partners</string>
+        <string>Partners</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_Website_1">
@@ -967,6 +973,12 @@ background-color: transparent;</string>
          <width>120</width>
          <height>40</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Visit Help The Homeless Coin Website</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">&lt;a href=&quot;https://hth.world&quot;&gt;&lt;/a&gt;</string>
        </property>
        <property name="text">
         <string>HTH Coin</string>
@@ -988,7 +1000,7 @@ background-color: transparent;</string>
         <string notr="true">&lt;a href=&quot;https://www.helpthehomelessworldwide.org&quot;&gt;&lt;/a&gt;</string>
        </property>
        <property name="text">
-        <string>HTH Worldwide</string>
+        <string>Nonprofit</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_Website_3">
@@ -1000,8 +1012,14 @@ background-color: transparent;</string>
          <height>40</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Visit Help The Homeless Coin Exchanges and Trade Today</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">&lt;a href=&quot;https://hth.world/exchanges.html&quot;&gt;&lt;/a&gt;</string>
+       </property>
        <property name="text">
-        <string>HTH Exchanges</string>
+        <string>Exchanges</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_Website_2">
@@ -1013,8 +1031,14 @@ background-color: transparent;</string>
          <height>40</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Visit Help The Homeless Coin Explorer and Track Your HTH Coins</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">&lt;a href=&quot;https://chainz.cryptoid.info/hth&quot;&gt;&lt;/a&gt;</string>
+       </property>
        <property name="text">
-        <string>HTH Explorer</string>
+        <string>Explorer</string>
        </property>
       </widget>
      </widget>
