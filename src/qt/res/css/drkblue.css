@@ -862,11 +862,10 @@ QStatusBar QLabel {
     }
 
     QWidget .QFrame#frame_bottom_2 .QListView { /* Transaction List */
-	   
-	color: #34bcaa !important;    
+	color: #34bcaa;       
         font-weight: bold;
         font-size: 12px;
-        margin-left: -60px;
+        margin-left: -66px;  /* CSS Voodoo - set to -66px to hide default transaction icons */
         padding: 0px;
         padding-top: 4px;
         background-color: transparent;
