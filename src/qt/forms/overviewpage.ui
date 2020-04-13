@@ -487,10 +487,10 @@
              <widget class="QPushButton" name="pushButton_Website">
               <property name="geometry">
                <rect>
-                <x>180</x>
-                <y>120</y>
-                <width>150</width>
-                <height>50</height>
+                <x>120</x>
+                <y>70</y>
+                <width>91</width>
+                <height>41</height>
                </rect>
               </property>
               <property name="toolTip">
@@ -506,14 +506,53 @@
              <widget class="QPushButton" name="pushButton_Website_1">
               <property name="geometry">
                <rect>
-                <x>14</x>
-                <y>120</y>
-                <width>150</width>
-                <height>50</height>
+                <x>10</x>
+                <y>0</y>
+                <width>91</width>
+                <height>41</height>
                </rect>
               </property>
               <property name="text">
                <string>HTH Coin</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_Website_3">
+              <property name="geometry">
+               <rect>
+                <x>230</x>
+                <y>140</y>
+                <width>91</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>HTH Explorer</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_Website_2">
+              <property name="geometry">
+               <rect>
+                <x>230</x>
+                <y>0</y>
+                <width>91</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>HTH Exchanges</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_Website_4">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>140</y>
+                <width>91</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>HTH Pools</string>
               </property>
              </widget>
             </widget>
@@ -922,9 +961,9 @@
          <item>
           <widget class="QWidget" name="recentTxWidget" native="true">
            <property name="styleSheet">
-               <string notr="true">color: rgb(52, 188, 170);
+            <string notr="true">color: rgb(52, 188, 170);
 background-color: transparent;</string>
-              </property>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="spacing">
              <number>5</number>
