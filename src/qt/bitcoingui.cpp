@@ -198,7 +198,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QHBoxLayout* frameSocialLayout = new QHBoxLayout(frameSocial);
     frameSocialLayout->setContentsMargins(16, 0, 16, 0);
     frameSocialLayout->setSpacing(16);
-   /* QLabel* web = new QLabel();                 // Not Used And Commented Out
+  
+            /* QLabel* web = new QLabel();                 // Not Used And Commented Out
     web->setObjectName(QStringLiteral("web"));
     web->setMinimumSize(QSize(21, 21));
     web->setMaximumSize(QSize(21, 21));
@@ -229,7 +230,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
    End Status Bar Social Links Not Used  ***/         
 
             
-    QLabel* mcm = new QLabel();
+        QLabel* mcm = new QLabel();
     mcm->setObjectName(QStringLiteral("github"));
     mcm->setMinimumSize(QSize(21, 21));
     mcm->setMaximumSize(QSize(21, 21));
@@ -241,7 +242,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     mcm->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Github.", nullptr));
 #endif // QT_NO_TOOLTIP
     mcm->setText(QApplication::translate("OverviewPage", "<a href=\"https://github.com/HTHcoin/HTH-Legacy\"><img src=\":/icons/github\" width=\"21\" height=\"21\"></a>", nullptr));
-    QLabel* twitter = new QLabel();
+   
+            QLabel* twitter = new QLabel();
     twitter->setObjectName(QStringLiteral("twitter"));
     twitter->setMinimumSize(QSize(21, 21));
     twitter->setMaximumSize(QSize(21, 21));
@@ -253,7 +255,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     twitter->setToolTip(QApplication::translate("OverviewPage", "Follow HTH on Twitter.", nullptr));
 #endif // QT_NO_TOOLTIP
     twitter->setText(QApplication::translate("OverviewPage", "<a href=\"https://twitter.com/HTHCoin\"><img src=\":/icons/twitter\" width=\"21\" height=\"21\"></a>", nullptr));
-    QLabel* discord = new QLabel();
+    
+            QLabel* discord = new QLabel();
     discord->setObjectName(QStringLiteral("discord"));
     discord->setMinimumSize(QSize(21, 21));
     discord->setMaximumSize(QSize(21, 21));
