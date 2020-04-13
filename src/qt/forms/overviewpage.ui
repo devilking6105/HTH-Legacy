@@ -1003,7 +1003,7 @@ background-color: transparent;</string>
         <string>Nonprofit</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_Website_3">
+      <widget class="QPushButton" name="pushButton_Website_2">
        <property name="geometry">
         <rect>
          <x>690</x>
@@ -1022,7 +1022,7 @@ background-color: transparent;</string>
         <string>Exchanges</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_Website_2">
+      <widget class="QPushButton" name="pushButton_Website_3">
        <property name="geometry">
         <rect>
          <x>910</x>
