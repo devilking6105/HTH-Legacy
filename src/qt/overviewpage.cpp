@@ -694,4 +694,12 @@ void QPushButton::on_pushButton_Website_1_clicked(this)
     connect(this, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
 }
 
+void QPushButton::setUrl(QString url) {
+    this->url = url;
+}
+
+void QPushButton::slotOpenUrl() {
+    QDesktopServices::openUrl(QUrl(this->url));
+}
+
 /*** End HTH Logo ***/
