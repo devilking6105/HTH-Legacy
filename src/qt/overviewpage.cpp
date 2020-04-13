@@ -170,7 +170,7 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     if(fMasterNode || nWalletBackups <= 0){
         DisablePrivateSendCompletely();
         if (nWalletBackups <= 0) {
-            ui->labelPrivateSendEnabled->setToolTip(tr("Automatic backups are disabled, no mixing available!"));
+            ui->labelPrivateSendEnabled_2->setToolTip(tr("Automatic backups are disabled, no mixing available!"));
         }
     } else {
         if(!fEnablePrivateSend){
@@ -211,12 +211,12 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchImmatureBalance = watchImmatureBalance;
     ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelAnonymized->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, anonymizedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelAnonymized_2->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, anonymizedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance + immatureBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitcoinUnits::separatorAlways));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
@@ -225,9 +225,9 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
 
     // for symmetry reasons also show immature label when the watch-only one is shown
-    ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature);
-    ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature);
-    ui->labelImmature->setVisible(showWatchOnlyImmature); // show watch-only immature balance
+    ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
+    ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
+    ui->labelImmatureText->setVisible(showWatchOnlyImmature); // show watch-only immature balance
 
     updatePrivateSendProgress();
 
@@ -245,17 +245,17 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
     ui->labelTotal->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
     ui->labelTotal->setVisible(showWatchOnly);      // show watch-only label
     ui->labelTotal->setVisible(showWatchOnly);    // show watch-only balance separator line
-    ui->labelImmature->setVisible(showWatchOnly); // show watch-only available balance
-    ui->labelImmature->setVisible(showWatchOnly);   // show watch-only pending balance
+    ui->labelImmatureText->setVisible(showWatchOnly); // show watch-only available balance
+    ui->labelImmatureText->setVisible(showWatchOnly);   // show watch-only pending balance
     ui->labelTotal->setVisible(showWatchOnly);     // show watch-only total balance
 
     if (!showWatchOnly){
-        ui->labelImmature->hide();
+        ui->labelImmatureText->hide();
     }
     else{
         ui->labelBalance->setIndent(20);
         ui->labelUnconfirmed->setIndent(20);
-        ui->labelImmature->setIndent(20);
+        ui->labelImmatureText->setIndent(20);
         ui->labelTotal->setIndent(20);
     }
 }
@@ -470,7 +470,7 @@ void OverviewPage::privateSendStatus()
     if(pwalletMain->nKeysLeftSinceAutoBackup < PRIVATESEND_KEYS_THRESHOLD_WARNING) {
         strKeysLeftText = "<span style='color:red;'>" + strKeysLeftText + "</span>";
     }
-    ui->labelPrivateSendEnabled->setToolTip(strKeysLeftText);
+    ui->labelPrivateSendEnabled_2->setToolTip(strKeysLeftText);
 
     if (!fEnablePrivateSend) {
         if (nBestHeight != darkSendPool.nCachedNumBlocks) {
@@ -484,7 +484,7 @@ void OverviewPage::privateSendStatus()
         QString strEnabled = tr("Disabled");
         // Show how many keys left in advanced PS UI mode only
         if (fShowAdvancedPSUI) strEnabled += ", " + strKeysLeftText;
-        ui->labelPrivateSendEnabled->setText(strEnabled);
+        ui->labelPrivateSendEnabled_2->setText(strEnabled);
 
         return;
     }
@@ -499,7 +499,7 @@ void OverviewPage::privateSendStatus()
                                    "<span style='color:red;'> you should always make sure you have backups "
                                    "saved in some safe place</span>!") + "<br><br>" +
                                 tr("Note: You turn this message off in options.");
-            ui->labelPrivateSendEnabled->setToolTip(strWarn);
+            ui->labelPrivateSendEnabled_2->setToolTip(strWarn);
             LogPrintf("OverviewPage::privateSendStatus -- Very low number of keys left since last automatic backup, warning user and trying to create new backup...\n");
             QMessageBox::warning(this, tr("PrivateSend"), strWarn, QMessageBox::Ok, QMessageBox::Ok);
         } else {
@@ -532,7 +532,7 @@ void OverviewPage::privateSendStatus()
     QString strEnabled = fEnablePrivateSend ? tr("Enabled") : tr("Disabled");
     // Show how many keys left in advanced PS UI mode only
     if(fShowAdvancedPSUI) strEnabled += ", " + strKeysLeftText;
-    ui->labelPrivateSendEnabled->setText(strEnabled);
+    ui->labelPrivateSendEnabled_2->setText(strEnabled);
 
     if(nWalletBackups == -1) {
         // Automatic backup failed, nothing else we can do until user fixes the issue manually
@@ -541,13 +541,13 @@ void OverviewPage::privateSendStatus()
         QString strError =  tr("ERROR! Failed to create automatic backup") + ", " +
                             tr("see debug.log for details.") + "<br><br>" +
                             tr("Mixing is disabled, please close your wallet and fix the issue!");
-        ui->labelPrivateSendEnabled->setToolTip(strError);
+        ui->labelPrivateSendEnabled_2->setToolTip(strError);
 
         return;
     } else if(nWalletBackups == -2) {
         // We were able to create automatic backup but keypool was not replenished because wallet is locked.
         QString strWarning = tr("WARNING! Failed to replenish keypool, please unlock your wallet to do so.");
-        ui->labelPrivateSendEnabled->setToolTip(strWarning);
+        ui->labelPrivateSendEnabled_2->setToolTip(strWarning);
     }
 
     // check darksend status and unlock if needed
@@ -674,7 +674,7 @@ void OverviewPage::DisablePrivateSendCompletely() {
     ui->privateSendReset_2->setText("(" + tr("Disabled") + ")");
     ui->togglePrivateSend_2->setEnabled(false);
     if (nWalletBackups <= 0) {
-        ui->labelPrivateSendEnabled->setText("<span style='color:red;'>(" + tr("Disabled") + ")</span>");
+        ui->labelPrivateSendEnabled_2->setText("<span style='color:red;'>(" + tr("Disabled") + ")</span>");
     }
     fEnablePrivateSend = false;
 }
