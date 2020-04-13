@@ -278,10 +278,10 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     webs->setToolTip(QApplication::translate("OverviewPage", "Where to mine HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
     webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless\"><img src=\":/icons/wwww\" width=\"21\" height=\"21\"></a>", nullptr));
-     
-    frameSocialLayout->addWidget(webs);        
-   /* frameSocialLayout->addWidget(www);        
-    frameSocialLayout->addWidget(web); */
+             
+    frameSocialLayout->addWidget(www);  
+   /* frameSocialLayout->addWidget(webs);  // Links Not Used
+    frameSocialLayout->addWidget(web); */  // Links Not Used
     frameSocialLayout->addWidget(mcm);
     frameSocialLayout->addWidget(twitter);
     frameSocialLayout->addWidget(discord);
