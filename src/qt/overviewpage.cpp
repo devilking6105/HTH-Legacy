@@ -331,6 +331,127 @@ void OverviewPage::updateAlerts(const QString& warnings)
   //  this->ui->labelAlerts->setText(warnings);
 }
 
+        /**** Masternode Information  ****/
+
+double roi1, roi2, roi3, roi4;
+
+void OverviewPage::updateMasternodeInfo()
+{
+  int CurrentBlock = clientModel->getNumBlocks();
+
+  if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced())
+  {
+
+   int mn1=0;
+   int mn2=0;
+   int mn3=0;
+   int mn4=0;
+   int totalmn=0;
+   std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeMap();
+    for(auto& mn : vMasternodes)
+    {
+       switch ( mn.Level())
+       {
+           case 1:
+           mn1++;break;
+           case 2:
+           mn2++;break;
+           case 3:
+           mn3++;break;
+           case 4:
+           mn4++;break;
+       }
+
+    }
+    totalmn=mn1+mn2+mn3+mn4;
+    ui->labelMnTotal_Value->setText(QString::number(totalmn));
+    int maxMnValue = std::max( { mn1, mn2, mn3, mn4 }, [](const int& s1, const int& s2) { return s1 < s2; });
+
+    ui->graphMN1->setMaximum(maxMnValue);
+    ui->graphMN2->setMaximum(maxMnValue);
+    ui->graphMN3->setMaximum(maxMnValue);
+    ui->graphMN4->setMaximum(maxMnValue);
+    ui->graphMN1->setValue(mn1);
+    ui->graphMN2->setValue(mn2);
+    ui->graphMN3->setValue(mn3);
+    ui->graphMN4->setValue(mn4);
+
+    // TODO: need a read actual 24h blockcount from chain
+    int BlockCount24h = block24hCount > 0 ? block24hCount : 1440;
+
+    // update ROI
+    double BlockReward = GetBlockValue(CurrentBlock);
+    BlockReward -= BlockReward * GetSporkValue(SPORK_11_DEV_FEE) / 100;
+    (mn1==0) ? roi1 = 0 : roi1 = (GetMasternodePayment(ActiveProtocol(), 1, BlockReward)*BlockCount24h)/mn1/COIN;
+    (mn2==0) ? roi2 = 0 : roi2 = (GetMasternodePayment(ActiveProtocol(), 2, BlockReward)*BlockCount24h)/mn2/COIN;
+    (mn3==0) ? roi3 = 0 : roi3 = (GetMasternodePayment(ActiveProtocol(), 3, BlockReward)*BlockCount24h)/mn3/COIN;
+    (mn4==0) ? roi4 = 0 : roi4 = (GetMasternodePayment(ActiveProtocol(), 4, BlockReward)*BlockCount24h)/mn4/COIN;
+    if (CurrentBlock >= 0) {
+        ui->roi_11->setText(mn1==0 ? "-" : QString::number(roi1,'f',0).append("  |"));
+        ui->roi_21->setText(mn2==0 ? "-" : QString::number(roi2,'f',0).append("  |"));
+        ui->roi_31->setText(mn3==0 ? "-" : QString::number(roi3,'f',0).append("  |"));
+        ui->roi_41->setText(mn4==0 ? "-" : QString::number(roi4,'f',0).append("  |"));
+
+        ui->roi_12->setText(mn1==0 ? " " : QString::number(  5000/roi1,'f',1).append(" days"));
+        ui->roi_22->setText(mn2==0 ? " " : QString::number( 25000/roi2,'f',1).append(" days"));
+        ui->roi_32->setText(mn3==0 ? " " : QString::number( 50000/roi3,'f',1).append(" days"));
+        ui->roi_42->setText(mn4==0 ? " " : QString::number(250000/roi4,'f',1).append(" days"));
+    }
+    CAmount tNodesSumm = mn1*5000 + mn2*25000 + mn3*50000 + mn4*250000;
+    CAmount tMoneySupply = chainActive.Tip()->nMoneySupply;
+    double tLocked = tMoneySupply > 0 ? 100 * static_cast<double>(tNodesSumm) / static_cast<double>(tMoneySupply / COIN) : 0;
+    ui->label_LockedCoin_value->setText(QString::number(tNodesSumm).append(" (" + QString::number(tLocked,'f',1) + "%)"));
+
+    // update timer
+    if (timerinfo_mn->interval() == 1000)
+            timerinfo_mn->setInterval(10000);
+  }
+
+  // update collateral info
+  if (CurrentBlock >= 0) {
+      ui->label_lcolat->setText("5000 HTH");
+      ui->label_mcolat->setText("25000 HTH");
+      ui->label_fcolat->setText("50000 HTH");
+      ui->label_pcolat->setText("250000 HTH");
+  }
+
+}
+
+
+       /**** End Masternode Information ****/
+
+
+      /**** Blockchain Information ****/
+
+void OverviewPage::updateBlockChainInfo()
+{
+    if (masternodeSync.IsBlockchainSynced())
+    {
+        int CurrentBlock = clientModel->getNumBlocks();
+        int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock-1);
+        double BlockReward = GetBlockValue(CurrentBlock);
+        double BlockRewardesbcoin =  static_cast<double>(BlockReward/COIN);
+        double CurrentDiff = GetDifficulty();
+
+        ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
+
+        ui->label_Nethash->setText(tr("Difficulty:"));
+        ui->label_Nethash_value->setText(QString::number(CurrentDiff,'f',4));
+
+        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardesbcoin, 'f', 1).append(" | ") + QString::number(GetSporkValue(SPORK_11_DEV_FEE)).append("%"));
+
+        ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" HTH"));
+
+        ui->label_24hBlock_value->setText(QString::number(block24hCount));
+        ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin)/COIN,'f',1).append(" | ") + QString::number(static_cast<double>(posMax)/COIN,'f',1));
+        ui->label_24hPoSMedian_value->setText(QString::number(static_cast<double>(posMedian)/COIN,'f',1));
+    }
+}
+
+     /**** End Blockchain Inormation ****/
+
+
+
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
