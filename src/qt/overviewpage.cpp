@@ -705,7 +705,7 @@ void OverviewPage::on_pushButton_Website_1_clicked() {  // HTH Coin Wesbite
 
 void OverviewPage::on_pushButton_Website_2_clicked() {  // HTH Exchanges
     
-    QDesktopServices::openUrl(QUrl("http://hth.world/exchanges.html/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://hth.world/exchanges.html/", QUrl::TolerantMode));
     
 }
 
@@ -717,7 +717,7 @@ void OverviewPage::on_pushButton_Website_3_clicked() {  // HTH Explorer
 
 void OverviewPage::on_pushButton_Website_4_clicked() {  // HTH Partners
     
-    QDesktopServices::openUrl(QUrl("http://hth.world/partners.html/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://hth.world/partners.html/", QUrl::TolerantMode));
     
 }
 
