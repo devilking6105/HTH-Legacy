@@ -922,8 +922,9 @@
          <item>
           <widget class="QWidget" name="recentTxWidget" native="true">
            <property name="styleSheet">
-            <string notr="true">color: rgb(52, 188, 170);</string>
-           </property>
+               <string notr="true">color: rgb(52, 188, 170);
+background-color: transparent;</string>
+              </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="spacing">
              <number>5</number>
@@ -949,7 +950,8 @@
                </sizepolicy>
               </property>
               <property name="styleSheet">
-               <string notr="true">color: rgb(52, 188, 170);</string>
+               <string notr="true">color: rgb(52, 188, 170);
+background-color: transparent;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
