@@ -18,8 +18,7 @@ QMainWindow {
 
       QWidget .QFrame#frame_blue_3 { /*blue frame */
 
-      	border-image: url(':/images/light/hth_logo_horizontal') 25 30 10 20 stretch stretch;
-	border-width: 25px 30px 10px 20px;
+      	border-image: url(':/images/light/hth_logo_horizontal') 0 0 0 0 stretch stretch;
         border-style: none;
 	
      }   
@@ -105,10 +104,15 @@ font-weight: bold;
         color: #000;
         font-weight: bold;
         font-size:12px;
-        padding-left:25px;
-        padding-right:25px;
-        padding-top:5px;
-        padding-bottom:5px;
+        min-height: 40px;
+	padding-left:25px;
+	padding-right:25px;
+	padding-top:5px;
+	padding-bottom:5px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
     }
 
     QPushButton:hover {
@@ -2128,21 +2132,3 @@ QStatusBar QLabel {
         border: 1px solid;
         border-color: #4D458C;
     }
-
-
-
-.QPushButton#pushButton_Website {
-	
-              onClicked: {
-            Qt.openUrlExternally("https://helpthehomelessworldwide.org/");
-              }
-	
-          }
-
-.QPushButton#pushButton_Website_1 {
-	
-              onClicked: {
-            Qt.openUrlExternally("https://hth.world/");
-              }
-	
-          }
