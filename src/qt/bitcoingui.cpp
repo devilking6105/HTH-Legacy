@@ -211,10 +211,10 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 #endif // QT_NO_TOOLTIP
     web->setText(QApplication::translate("OverviewPage", "<a href=\"https://helpthehomelessworldwide.org\"><img src=\":/icons/web\" width=\"21\" height=\"21\"></a>", nullptr));
             
-   End Status Bar Social Links Not Used  ***/  
+   
             
             QLabel* www = new QLabel();
-    www->setObjectName(QStringLiteral("www"));
+    www->setObjectName(QStringLiteral("webs"));
     www->setMinimumSize(QSize(21, 21));
     www->setMaximumSize(QSize(21, 21));
     www->setBaseSize(QSize(0, 0));
@@ -224,8 +224,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 #ifndef QT_NO_TOOLTIP
     www->setToolTip(QApplication::translate("OverviewPage", "Where To Mine HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
-    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless/\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
+    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless/\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
             
+   End Status Bar Social Links Not Used  ***/         
 
             
     QLabel* mcm = new QLabel();
@@ -266,7 +267,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     discord->setText(QApplication::translate("OverviewPage", "<a href=\"https://discord.gg/r7zKfy5\"><img src=\":/icons/discord\" width=\"21\" height=\"21\"></a>", nullptr));
             
             QLabel* webs = new QLabel();
-    webs->setObjectName(QStringLiteral("webs"));
+    webs->setObjectName(QStringLiteral("www"));
     webs->setMinimumSize(QSize(21, 21));
     webs->setMaximumSize(QSize(21, 21));
     webs->setBaseSize(QSize(0, 0));
@@ -276,7 +277,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 #ifndef QT_NO_TOOLTIP
     webs->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Explorer.", nullptr));
 #endif // QT_NO_TOOLTIP
-    webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
+    webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about\"><img src=\":/icons/wwww\" width=\"21\" height=\"21\"></a>", nullptr));
      
     frameSocialLayout->addWidget(webs);        
    /* frameSocialLayout->addWidget(www);        
