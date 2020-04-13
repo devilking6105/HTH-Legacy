@@ -270,7 +270,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     discord->setText(QApplication::translate("OverviewPage", "<a href=\"https://discord.gg/r7zKfy5\"><img src=\":/icons/discord\" width=\"21\" height=\"21\"></a>", nullptr));
             
             QLabel* webs = new QLabel();
-    ww->setObjectName(QStringLiteral("www"));
+    www->setObjectName(QStringLiteral("www"));
     www->setMinimumSize(QSize(21, 21));
     www->setMaximumSize(QSize(21, 21));
     www->setBaseSize(QSize(0, 0));
