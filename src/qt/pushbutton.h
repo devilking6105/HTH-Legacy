@@ -7,16 +7,17 @@ class QPushButton;
 
 // This is the declaration of our MainWidget class
 // The definition/implementation is in mainwidget.cpp
-class QPushButton : public QWidget
+class MainWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit QPushButton(QWidget *parent = 0); //Constructor
-    ~PushButton(); // Destructor
+    explicit MainWidget(QWidget *parent = 0); //Constructor
+    ~MainWidget(); // Destructor
 
 private:
    QPushButton* button_;
+   QTextBrowser* textBrowser_;
 };
 
 #endif // PUSHBUTTON_H
