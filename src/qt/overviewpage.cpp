@@ -688,7 +688,7 @@ void QPushButton::on_pushButton_Website_clicked()
     connect(this, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
 }
 
-void QPushButton::on_pushButton_Website_1_clicked()
+void QPushButton::on_pushButton_WebsiteA_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
      this->setFlat(true);
