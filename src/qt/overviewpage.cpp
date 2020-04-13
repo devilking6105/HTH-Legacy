@@ -698,26 +698,26 @@ void OverviewPage::on_pushButton_Website_clicked() {  // Nonprofit Wesbite
 
 void OverviewPage::on_pushButton_Website_1_clicked() {  // HTH Coin Wesbite
     
-    QDesktopServices::openUrl(QUrl("https://hth.world/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://hth.world", QUrl::TolerantMode));
     
 }
 
 
 void OverviewPage::on_pushButton_Website_2_clicked() {  // HTH Exchanges
     
-    QDesktopServices::openUrl(QUrl("https://hth.world/exchanges.html/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://hth.world/exchanges.html", QUrl::TolerantMode));
     
 }
 
 void OverviewPage::on_pushButton_Website_3_clicked() {  // HTH Explorer
     
-    QDesktopServices::openUrl(QUrl("https://chainz.cryptoid.info/hth/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://chainz.cryptoid.info/hth", QUrl::TolerantMode));
     
 }
 
 void OverviewPage::on_pushButton_Website_4_clicked() {  // HTH Partners
     
-    QDesktopServices::openUrl(QUrl("https://hth.world/partners.html/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://hth.world/partners.html", QUrl::TolerantMode));
     
 }
 
