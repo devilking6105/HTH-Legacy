@@ -31,6 +31,7 @@ class WalletFrame;
 class WalletModel;
 class HelpMessageDialog;
 class MasternodeList;
+class QPushButton;
 
 class CWallet;
 
