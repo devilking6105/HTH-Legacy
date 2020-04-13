@@ -202,6 +202,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QHBoxLayout* frameSocialLayout = new QHBoxLayout(frameSocial);
     frameSocialLayout->setContentsMargins(16, 0, 16, 0);
     frameSocialLayout->setSpacing(16);
+    
+   /***  Unused Links
+   
     QLabel* web = new QLabel();
     web->setObjectName(QStringLiteral("web"));
     web->setMinimumSize(QSize(21, 21));
@@ -227,7 +230,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     www->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
     www->setText(QApplication::translate("OverviewPage", "<a href=\"https://hth.world\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
-            
+          
+ Unused Links         ****/
             
     QLabel* mcm = new QLabel();
     mcm->setObjectName(QStringLiteral("mcm"));
