@@ -198,7 +198,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QHBoxLayout* frameSocialLayout = new QHBoxLayout(frameSocial);
     frameSocialLayout->setContentsMargins(16, 0, 16, 0);
     frameSocialLayout->setSpacing(16);
-   /* QLabel* web = new QLabel();
+   /* QLabel* web = new QLabel();                 // Not Used And Commented Out
     web->setObjectName(QStringLiteral("web"));
     web->setMinimumSize(QSize(21, 21));
     web->setMaximumSize(QSize(21, 21));
@@ -211,6 +211,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 #endif // QT_NO_TOOLTIP
     web->setText(QApplication::translate("OverviewPage", "<a href=\"https://helpthehomelessworldwide.org\"><img src=\":/icons/web\" width=\"21\" height=\"21\"></a>", nullptr));
             
+   End Status Bar Social Links Not Used  ***/  
+            
             QLabel* www = new QLabel();
     www->setObjectName(QStringLiteral("www"));
     www->setMinimumSize(QSize(21, 21));
@@ -220,11 +222,11 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     www->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     www->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    www->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Coin.", nullptr));
+    www->setToolTip(QApplication::translate("OverviewPage", "Where To Mine HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
-    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://hth.world\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
+    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless/\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
             
-    */
+
             
     QLabel* mcm = new QLabel();
     mcm->setObjectName(QStringLiteral("github"));
