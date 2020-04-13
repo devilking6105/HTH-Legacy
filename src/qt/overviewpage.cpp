@@ -685,14 +685,14 @@ void QPushButton::on_pushButton_Website_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://helpthehomelessworldwide.org", QUrl::TolerantMode));
      this->setFlat(true);
-    connect(this, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
+    connect(pushButton, &QPushButton::clicked, this, &QPushButton::OnClickedPushButton);
 }
 
 void QPushButton::on_pushButton_WebsiteA_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
      this->setFlat(true);
-    connect(this, SIGNAL(clicked()), this, SLOT(slotOpenUrl()));
+    connect(pushButton, &QPushButton::clicked, this, &QPushButton::OnClickedPushButton);
 } 
 
 /*** End HTH Logo ***/
