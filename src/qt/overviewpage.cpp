@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QPushButton>
 
 #define ICON_OFFSET 16
 #define DECORATION_SIZE 54
