@@ -28,10 +28,10 @@
 #include <QAbstractItemDelegate>
 #include <QPainter>
 #include <QSettings>
+#include <QString>
 #include <QTimer>
 #include <QUrl>
 #include <QDesktopServices>
-#include <QPushButton>
 
 #define ICON_OFFSET 16
 #define DECORATION_SIZE 54
@@ -49,81 +49,86 @@ public:
 
     }
 
-    inline void paint(QPainter *painter, const QStyleOptionViewItem &option,
-                      const QModelIndex &index ) const
+    inline void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
     {
+        QSettings settings;
+        QString theme = settings.value("theme", "drkblue").toString();
+
         painter->save();
 
-        QIcon icon = qvariant_cast<QIcon>(index.data(TransactionTableModel::RawDecorationRole));
+        QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
         mainRect.moveLeft(ICON_OFFSET);
-        QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
+        QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE - 6, DECORATION_SIZE - 6));
         int xspace = DECORATION_SIZE + 8;
         int ypad = 6;
-        int halfheight = (mainRect.height() - 2*ypad)/2;
-        QRect amountRect(mainRect.left() + xspace, mainRect.top()+ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
-        QRect addressRect(mainRect.left() + xspace, mainRect.top()+ypad+halfheight, mainRect.width() - xspace, halfheight);
-        icon = platformStyle->SingleColorIcon(icon);
+        int halfheight = (mainRect.height() - 2 * ypad) / 2;
+        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
+        QRect addressRect(mainRect.left() + xspace, mainRect.top() + ypad + halfheight, mainRect.width() - xspace, halfheight);
         icon.paint(painter, decorationRect);
 
         QDateTime date = index.data(TransactionTableModel::DateRole).toDateTime();
         QString address = index.data(Qt::DisplayRole).toString();
         qint64 amount = index.data(TransactionTableModel::AmountRole).toLongLong();
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
-        QVariant value = index.data(Qt::ForegroundRole);
-        QColor foreground = option.palette.color(QPalette::Text);
-        if(value.canConvert<QBrush>())
-        {
-            QBrush brush = qvariant_cast<QBrush>(value);
-            foreground = brush.color();
-        }
+        //QVariant value = index.data(Qt::ForegroundRole);
+        QColor foreground = COLOR_BLACK;
 
+        // paint address
+        if (theme.operator==("light")) foreground = QColor(140, 104, 76); //"#8C684C"
+        else if (theme.operator==("drkblue")) foreground = QColor(205, 220, 234);
+        else foreground = COLOR_BLACK;
+        //if (value.canConvert<QBrush>()) {
+        //    QBrush brush = qvariant_cast<QBrush>(value);
+        //    foreground = brush.color();
+        //}
+        //if (theme.operator==("light")) foreground = QColor(144, 144, 144);
+        //else if (theme.operator==("drkblue")) foreground = QColor(103, 119, 127);
+        //else foreground = foreground;
         painter->setPen(foreground);
         QRect boundingRect;
-        painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address, &boundingRect);
+        painter->drawText(addressRect, Qt::AlignLeft | Qt::AlignVCenter, address, &boundingRect);
 
-        if (index.data(TransactionTableModel::WatchonlyRole).toBool())
-        {
-            QIcon iconWatchonly = qvariant_cast<QIcon>(index.data(TransactionTableModel::WatchonlyDecorationRole));
-            QRect watchonlyRect(boundingRect.right() + 5, mainRect.top()+ypad+halfheight, 16, halfheight);
-            iconWatchonly.paint(painter, watchonlyRect);
-        }
-
-        if(amount < 0)
-        {
-            foreground = COLOR_NEGATIVE;
-        }
-        else if(!confirmed)
-        {
-            foreground = COLOR_UNCONFIRMED;
-        }
-        else
-        {
-            foreground = option.palette.color(QPalette::Text);
+        // paint amount
+        if (amount < 0) {
+            if (theme.operator==("light")) foreground = QColor(220, 50, 50); //"#DC3232"
+            else if (theme.operator==("drkblue")) foreground = QColor(220, 50, 50);
+            else foreground = COLOR_NEGATIVE;
+        } else if (!confirmed) {
+            if (theme.operator==("light")) foreground = QColor(151, 135, 117); //"#978775"
+            else if (theme.operator==("drkblue")) foreground = QColor(205, 220, 234);
+            else foreground = COLOR_UNCONFIRMED;
+        } else {
+            if (theme.operator==("light")) foreground = QColor(240, 216, 174); //"#F0D8AE"
+            else if (theme.operator==("drkblue")) foreground = QColor(205, 220, 234);
+            else foreground = COLOR_BLACK;
         }
         painter->setPen(foreground);
-        QString amountText = BitcoinUnits::floorWithUnit(unit, amount, true, BitcoinUnits::separatorAlways);
-        if(!confirmed)
-        {
+        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true, BitcoinUnits::separatorAlways);
+        if (!confirmed) {
             amountText = QString("[") + amountText + QString("]");
         }
-        painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
+        painter->drawText(amountRect, Qt::AlignRight | Qt::AlignVCenter, amountText);
 
-        painter->setPen(option.palette.color(QPalette::Text));
-        painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
+        // paint date
+        if (theme.operator==("light")) foreground = QColor(240, 216, 174); //"#F0D8AE"
+        else if (theme.operator==("drkblue")) foreground = QColor(205, 220, 234);
+        else foreground = COLOR_BLACK;
+        painter->drawText(amountRect, Qt::AlignLeft | Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
         painter->restore();
     }
 
-    inline QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+    inline QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
     {
         return QSize(DECORATION_SIZE, DECORATION_SIZE);
     }
 
     int unit;
     const PlatformStyle *platformStyle;
-
 };
+
+
 #include "overviewpage.moc"
 
 OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) :
@@ -140,9 +145,14 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     txdelegate(new TxViewDelegate(platformStyle)),
     filter(0)
 {
+        
     ui->setupUi(this);
     QString theme = GUIUtil::getThemeName();
-
+        
+   /* ui->pushButton_Website->setIcon(QIcon(GUIUtil::getThemeImage(":/icons/website"))); */
+    ui->pushButton_Website->setStatusTip(tr("Visit Help The Homeless Worldwide A NJ Nonprofit Corporation"));
+    ui->pushButton_Website_1->setStatusTip(tr("Visit Help The Homeless Coin"));
+        
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);
     ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -174,9 +184,9 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
         }
     } else {
         if(!fEnablePrivateSend){
-            ui->togglePrivateSend_2->setText(tr("Start Mixing"));
+            ui->labelPrivateSendEnabled_2->setText(tr("Start Mixing"));
         } else {
-            ui->togglePrivateSend_2->setText(tr("Stop Mixing"));
+            ui->labelPrivateSendEnabled_2->setText(tr("Stop Mixing"));
         }
         // Disable darkSendPool builtin support for automatic backups while we are in GUI,
         // we'll handle automatic backups and user warnings in privateSendStatus()
@@ -213,10 +223,10 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelAnonymized_2->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, anonymizedBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance + immatureBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelImmatureText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotalText->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance + immatureBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitcoinUnits::separatorAlways));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
@@ -227,7 +237,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
     ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
-    ui->labelImmatureText->setVisible(showWatchOnlyImmature); // show watch-only immature balance
+    ui->labelWatchImmature->setVisible(showWatchOnlyImmature); // show watch-only immature balance
 
     updatePrivateSendProgress();
 
@@ -242,21 +252,21 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 // show/hide watch-only labels
 void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
 {
-    ui->labelTotal->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
+    ui->labelBalance->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
     ui->labelTotal->setVisible(showWatchOnly);      // show watch-only label
-    ui->labelTotal->setVisible(showWatchOnly);    // show watch-only balance separator line
-    ui->labelImmatureText->setVisible(showWatchOnly); // show watch-only available balance
-    ui->labelImmatureText->setVisible(showWatchOnly);   // show watch-only pending balance
+    ui->labelBalance->setVisible(showWatchOnly);    // show watch-only balance separator line
+    ui->labelTotal->setVisible(showWatchOnly); // show watch-only available balance
+    ui->labelTotal->setVisible(showWatchOnly);   // show watch-only pending balance
     ui->labelTotal->setVisible(showWatchOnly);     // show watch-only total balance
 
     if (!showWatchOnly){
-        ui->labelImmatureText->hide();
+        ui->labelWatchImmature->hide();
     }
     else{
         ui->labelBalance->setIndent(20);
         ui->labelUnconfirmed->setIndent(20);
         ui->labelImmatureText->setIndent(20);
-        ui->labelTotal->setIndent(20);
+        ui->labelTotalText->setIndent(20);
     }
 }
 
@@ -315,13 +325,11 @@ void OverviewPage::updateDisplayUnit()
     }
 }
 
-  //Commented out for labelAlerts error during compilation
-
- void OverviewPage::updateAlerts(const QString &warnings)
+void OverviewPage::updateAlerts(const QString& warnings)
 {
-   /* this->ui->labelAlerts->setVisible(!warnings.isEmpty());
-    this->ui->labelAlerts->setText(warnings); */
-} 
+  //  this->ui->labelAlerts->setVisible(!warnings.isEmpty());
+  //  this->ui->labelAlerts->setText(warnings);
+}
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
@@ -667,6 +675,21 @@ void OverviewPage::SetupTransactionList(int nNumItems) {
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
     }
 }
+/************** HTH Worldwide Button ******************/
+ 
+void OverviewPage::on_pushButton_Website_clicked() {
+    
+    QDesktopServices::openUrl(QUrl("https://www.helpthehomelessworldwide.org/", QUrl::TolerantMode));
+    
+}
+
+void OverviewPage::on_pushButton_Website_1_clicked() {
+    
+    QDesktopServices::openUrl(QUrl("https://hth.world/", QUrl::TolerantMode));
+    
+}
+
+/************** HTH Worldwide Button ******************/
 
 void OverviewPage::DisablePrivateSendCompletely() {
     ui->togglePrivateSend_2->setText("(" + tr("Disabled") + ")");
@@ -678,18 +701,3 @@ void OverviewPage::DisablePrivateSendCompletely() {
     }
     fEnablePrivateSend = false;
 }
-
-
-/*** HTH Logo Buttons ***/
-
-void QPushButton::on_PushButton_Website_clicked()
-{
-  QDesktopServices::openUrl(QUrl("http://helpthehomelessworldwide.org", QUrl::TolerantMode));
-}
-
-void QPushButton::on_PushButton_Website_1_clicked()
-{
-  QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
-}
-
-/*** End HTH Logo ***/
