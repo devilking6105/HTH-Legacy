@@ -18,7 +18,8 @@ QMainWindow {
 
       QWidget .QFrame#frame_blue_3 { /*blue frame */
 
-      	border-image: url(':/images/light/hth_logo_horizontal') 0 0 0 0 stretch stretch;
+      	border-image: url(':/images/light/hth_logo_horizontal') 25 30 10 20 stretch stretch;
+	border-width: 25px 30px 10px 20px;
         border-style: none;
 	
      }   
