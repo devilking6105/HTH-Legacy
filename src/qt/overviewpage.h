@@ -78,6 +78,8 @@ private Q_SLOTS:
     void handleTransactionClicked(const QModelIndex &index);
     void updateAlerts(const QString &warnings);
     void updateWatchOnlyLabels(bool showWatchOnly);
+    void on_pushButton_Website_clicked();
+    void on_pushButton_Website_1_clicked();
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H
