@@ -284,8 +284,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
      
     frameSocialLayout->addWidget(webs);        
-    frameSocialLayout->addWidget(www);        
-    frameSocialLayout->addWidget(web);
+    /* frameSocialLayout->addWidget(www);  */      
+    /* frameSocialLayout->addWidget(web);  */
     frameSocialLayout->addWidget(mcm);
     frameSocialLayout->addWidget(twitter);
     frameSocialLayout->addWidget(discord);
