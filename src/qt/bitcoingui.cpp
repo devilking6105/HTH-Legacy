@@ -1527,7 +1527,7 @@ void UnitDisplayStatusBarControl::onMenuSelection(QAction* action)
 }
 
 
-/*** HTH Logo Buttons ***/
+/*** HTH Logo Buttons
 
 void QPushButton::on_PushButton_Website_clicked()
 {
@@ -1537,6 +1537,7 @@ void QPushButton::on_PushButton_Website_clicked()
 void QPushButton::on_PushButton_Website_1_clicked()
 {
   QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
-}
+}  
+
 
 /*** End HTH Logo ***/
