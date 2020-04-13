@@ -435,7 +435,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QFrame" name="frame_3">
+        <widget class="QFrame" name="frame_2">
          <property name="minimumSize">
           <size>
            <width>345</width>
@@ -500,7 +500,7 @@
                <string notr="true">&lt;a href=&quot;https://www.helpthehomelessworldwide.org&quot;&gt;&lt;/a&gt;</string>
               </property>
               <property name="text">
-               <string>Nonprofit</string>
+               <string>HTH Worldwide</string>
               </property>
              </widget>
              <widget class="QPushButton" name="pushButton_Website_1">
@@ -511,12 +511,6 @@
                 <width>120</width>
                 <height>40</height>
                </rect>
-              </property>
-              <property name="toolTip">
-               <string>Visit Help The Homeless Coin</string>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">&lt;a href=&quot;https://hth.world&quot;&gt;&lt;/a&gt;</string>
               </property>
               <property name="text">
                <string>HTH Coin</string>
@@ -531,33 +525,21 @@
                 <height>40</height>
                </rect>
               </property>
-              <property name="toolTip">
-               <string>Trade Help The Homeless Coin Where HTH Is Listed</string>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">&lt;a href=&quot;https://hth.world/exchanges.html&quot;&gt;&lt;/a&gt;</string>
-              </property>
               <property name="text">
-               <string>Explorer</string>
+               <string>HTH Explorer</string>
               </property>
              </widget>
              <widget class="QPushButton" name="pushButton_Website_3">
               <property name="geometry">
                <rect>
-                <x>700</x>
-                <y>540</y>
-                <width>230</width>
-                <height>0</height>
+                <x>230</x>
+                <y>0</y>
+                <width>120</width>
+                <height>40</height>
                </rect>
               </property>
-              <property name="toolTip">
-               <string>Follow Help The Homless Coin Transactions On The Explorer</string>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">&lt;a href=&quot;https://chainz.cryptoid.info/hth&quot;&gt;&lt;/a&gt;</string>
-              </property>
               <property name="text">
-               <string>Exchanges</string>
+               <string>HTH Exchanges</string>
               </property>
              </widget>
              <widget class="QPushButton" name="pushButton_Website_4">
@@ -569,14 +551,8 @@
                 <height>40</height>
                </rect>
               </property>
-              <property name="toolTip">
-               <string>Visit HTH Partners and Donate Today!!!!!</string>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">&lt;a href=&quot;https://hth.world/partners.html&quot;&gt;&lt;/a&gt;</string>
-              </property>
               <property name="text">
-               <string>Partners</string>
+               <string>HTH Partners</string>
               </property>
              </widget>
             </widget>
