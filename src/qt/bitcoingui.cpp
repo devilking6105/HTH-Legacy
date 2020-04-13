@@ -57,6 +57,8 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QDesktopServices>
+#include <QUrl>
 
 
 #if QT_VERSION < 0x050000
