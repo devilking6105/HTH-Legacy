@@ -56,10 +56,6 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QVBoxLayout>
-#include <QPushButton>
-#include <QDesktopServices>
-#include <QUrl>
-
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -202,10 +198,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QHBoxLayout* frameSocialLayout = new QHBoxLayout(frameSocial);
     frameSocialLayout->setContentsMargins(16, 0, 16, 0);
     frameSocialLayout->setSpacing(16);
-    
-   /***  Unused Links
-   
-    QLabel* web = new QLabel();
+   /* QLabel* web = new QLabel();
     web->setObjectName(QStringLiteral("web"));
     web->setMinimumSize(QSize(21, 21));
     web->setMaximumSize(QSize(21, 21));
@@ -230,11 +223,11 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     www->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
     www->setText(QApplication::translate("OverviewPage", "<a href=\"https://hth.world\"><img src=\":/icons/www\" width=\"21\" height=\"21\"></a>", nullptr));
-          
- Unused Links         ****/
+            
+    */
             
     QLabel* mcm = new QLabel();
-    mcm->setObjectName(QStringLiteral("mcm"));
+    mcm->setObjectName(QStringLiteral("github"));
     mcm->setMinimumSize(QSize(21, 21));
     mcm->setMaximumSize(QSize(21, 21));
     mcm->setBaseSize(QSize(0, 0));
@@ -242,9 +235,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     mcm->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     mcm->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    mcm->setToolTip(QApplication::translate("OverviewPage", "Visit Exchanges.", nullptr));
+    mcm->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Github.", nullptr));
 #endif // QT_NO_TOOLTIP
-    mcm->setText(QApplication::translate("OverviewPage", "<a href=\"https://hth.world/exchanges.html\"><img src=\":/icons/mcm\" width=\"21\" height=\"21\"></a>", nullptr));
+    mcm->setText(QApplication::translate("OverviewPage", "<a href=\"https://github.com/HTHcoin/HTH-Legacy\"><img src=\":/icons/github\" width=\"21\" height=\"21\"></a>", nullptr));
     QLabel* twitter = new QLabel();
     twitter->setObjectName(QStringLiteral("twitter"));
     twitter->setMinimumSize(QSize(21, 21));
@@ -284,8 +277,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
      
     frameSocialLayout->addWidget(webs);        
-    /* frameSocialLayout->addWidget(www);  */      
-    /* frameSocialLayout->addWidget(web);  */
+   /* frameSocialLayout->addWidget(www);        
+    frameSocialLayout->addWidget(web); */
     frameSocialLayout->addWidget(mcm);
     frameSocialLayout->addWidget(twitter);
     frameSocialLayout->addWidget(discord);
@@ -1471,7 +1464,7 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
+    setStyleSheet(QString("QLabel { color : gold }").arg(platformStyle->SingleColor().name()));
 }
 
 /** So that it responds to button clicks */
@@ -1529,19 +1522,3 @@ void UnitDisplayStatusBarControl::onMenuSelection(QAction* action)
         optionsModel->setDisplayUnit(action->data());
     }
 }
-
-
-/*** HTH Logo Buttons
-
-void QPushButton::on_PushButton_Website_clicked()
-{
-  QDesktopServices::openUrl(QUrl("http://helpthehomelessworldwide.org", QUrl::TolerantMode));
-}
-
-void QPushButton::on_PushButton_Website_1_clicked()
-{
-  QDesktopServices::openUrl(QUrl("http://hth.world", QUrl::TolerantMode));
-}  
-
-
-/*** End HTH Logo ***/
