@@ -58,6 +58,7 @@ private:
     CAmount currentWatchOnlyBalance;
     CAmount currentWatchUnconfBalance;
     CAmount currentWatchImmatureBalance;
+    
     int nDisplayUnit;
     bool fShowAdvancedPSUI;
 
@@ -80,6 +81,7 @@ private Q_SLOTS:
     void updateWatchOnlyLabels(bool showWatchOnly);
     void on_pushButton_Website_clicked();
     void on_pushButton_Website_1_clicked();
+          
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H
