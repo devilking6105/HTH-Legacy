@@ -222,9 +222,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     www->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     www->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    www->setToolTip(QApplication::translate("OverviewPage", "Where To Mine HTH Coin.", nullptr));
+    www->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Explorer.", nullptr));
 #endif // QT_NO_TOOLTIP
-    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless/\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
+    www->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about/\"><img src=\":/icons/webs\" width=\"21\" height=\"21\"></a>", nullptr));
             
    End Status Bar Social Links Not Used  ***/         
 
@@ -275,9 +275,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     webs->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
     webs->setOpenExternalLinks(true);
 #ifndef QT_NO_TOOLTIP
-    webs->setToolTip(QApplication::translate("OverviewPage", "Visit HTH Explorer.", nullptr));
+    webs->setToolTip(QApplication::translate("OverviewPage", "Where to mine HTH Coin.", nullptr));
 #endif // QT_NO_TOOLTIP
-    webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://openchains.info/coin/hth/about\"><img src=\":/icons/wwww\" width=\"21\" height=\"21\"></a>", nullptr));
+    webs->setText(QApplication::translate("OverviewPage", "<a href=\"https://wheretomine.io/coins/helpthehomeless\"><img src=\":/icons/wwww\" width=\"21\" height=\"21\"></a>", nullptr));
      
     frameSocialLayout->addWidget(webs);        
    /* frameSocialLayout->addWidget(www);        
