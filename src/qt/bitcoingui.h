@@ -90,6 +90,8 @@ private:
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
     QProgressDialog *progressDialog;
+    QPushButton *pushButton_Website;
+    QPushButton * pushButton_Website_1;
 
     QMenuBar *appMenuBar;
     QAction *overviewAction;
