@@ -14,7 +14,7 @@ QMainWindow {
 
     }
 
-      QWidget .QFrame#frame_blue3 { /*blue frame */
+      QWidget .QFrame#frame_2 { /*blue frame */
 /*
         border-image: url(':/images_dblue/frame_blue') 0 0 0 0 stretch stretch;
         background-repeat:none;
