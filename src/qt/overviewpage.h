@@ -81,7 +81,9 @@ private Q_SLOTS:
     void updateWatchOnlyLabels(bool showWatchOnly);
     void on_pushButton_Website_clicked();
     void on_pushButton_Website_1_clicked();
-          
+    void on_pushButton_Website_2_clicked();
+    void on_pushButton_Website_3_clicked();
+    void on_pushButton_Website_4_clicked();
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H
