@@ -19,6 +19,13 @@
 #include "transactiontablemodel.h"
 #include "utilitydialog.h"
 #include "walletmodel.h"
+#include "main.h"
+#include "masternodeman.h"
+#include "chaninparams.h"
+#include "main.h"
+#include "amount.h"
+#include "addressbookpage.h"
+#include "rpcblockchain.cpp"
 
 #include "darksend.h"
 #include "instantx.h"
