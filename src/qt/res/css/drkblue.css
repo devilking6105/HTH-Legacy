@@ -836,18 +836,18 @@ QStatusBar QLabel {
      /*************** Frame_bottom_2 section Recent Transactions*****************/
 
 
-    QWidget .QFrame#frame_bottom_2 { /*bottom frame 2 - transactions */
+    QWidget .QFrame#frame_2 { /*bottom frame 2 - transactions */
         background-color: transparent;
         border-style: none;
     }
 
-    QWidget .QFrame#frame_bottom_2 .QLabel#label_6 {
+    QWidget .QFrame#frame_2 .QLabel#label_6 {
         background-color:transparent;
         color: #34bcaa;
         font-size:12px;
     }
 
-    QWidget .QFrame#frame_bottom_2 .QLabel#labelTransactionsStatus{
+    QWidget .QFrame#frame_2 .QLabel#labelTransactionsStatus{
         background-color:transparent;
         color: rgb(255, 15, 15);
         font-size:12px;
@@ -861,7 +861,7 @@ QStatusBar QLabel {
        background-color: #1e13d2
     }
 
-    QWidget .QFrame#frame_bottom_2 .QListView { /* Transaction List */
+    QWidget .QFrame#frame_2 .QListView { /* Transaction List */
 	color: #34bcaa;       
         font-weight: bold;
         font-size: 12px;
