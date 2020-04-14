@@ -45,7 +45,6 @@ static std::vector<std::pair<int, statElement>> statSourceData;
 
 CCriticalSection cs_stat;
 map<std::string, CAmount> masternodeRewards;
-CAmount;
 int block24hCount;
 CAmount lockedCoin;
 
@@ -101,48 +100,13 @@ void ClientModel::update24hStatsTimer()
     int currentBlock = pblockindex->nHeight;
     // read block from last to last scaned
     while (pblockindex->nHeight > blockLast) {
-        if (ReadBlockFromDisk(block, pblockindex)) {
-            if (block.IsProofOfStake()) {
-                // decode transactions
-                const CTransaction& tx = block.vtx[1];
-                if (tx.IsCoinStake()) {
-                    // decode txIn
-                    CTransaction txIn;
-                    uint256 hashBlock;
-                    if (GetTransaction(tx.vin[0].prevout.hash, txIn, hashBlock, true)) {
-                        CAmount valuePoS = txIn.vout[tx.vin[0].prevout.n].nValue; // vin Value
-                        ExtractDestination(txIn.vout[tx.vin[0].prevout.n].scriptPubKey, Dest);
-                        Address.Set(Dest);
-                        std::string addressPoS = Address.ToString(); // vin Address
-
-                        statElement blockStat;
-                        blockStat.blockTime = block.nTime;
-                        blockStat.txInValue = valuePoS;
-                        blockStat.mnPayee.clear();
-
-                        // decode txOut
-                        CAmount sumPoS = 0;
-                        for (unsigned int i = 0; i < tx.vout.size(); i++) {
-                            CTxOut txOut = tx.vout[i];
-                            ExtractDestination(txOut.scriptPubKey, Dest);
-                            Address.Set(Dest);
-                            std::string addressOut = Address.ToString(); // vout Address
-                            if (addressPoS == addressOut && valuePoS > sumPoS) {
-                                // skip pos output
-                                sumPoS += txOut.nValue;
-                            } else {
-                                // store vout payee and value
-                                blockStat.mnPayee.push_back( make_pair(addressOut, txOut.nValue) );
-                                // and update node rewards
-                                masternodeRewards[addressOut] += txOut.nValue;
-                            }
-                        } 
-                        // store block stat
-                        statSourceData.push_back( make_pair(pblockindex->nHeight, blockStat) );
-                        // stop if blocktime over 24h past
-                        if ( (block.nTime + 24*60*60) < syncStartTime ) {
-                            blockOldest = pblockindex->nHeight;
-                            break;
+        else
+          // store block stat
+           statSourceData.push_back( make_pair(pblockindex->nHeight, blockStat) );
+          // stop if blocktime over 24h past
+        if ( (block.nTime + 24*60*60) < syncStartTime ) {
+               blockOldest = pblockindex->nHeight;
+                   break;
                         }
                     }
                 }
@@ -177,23 +141,6 @@ void ClientModel::update24hStatsTimer()
       // sorting vector and get stats values
       sort(statSourceData.begin(), statSourceData.end(), sortStat);
 
-      if (statSourceData.size() > 100) {
-        CAmount posAverage = 0;
-        for (auto it = statSourceData.begin(); it != statSourceData.begin() + 100; ++it)
-              posAverage += it->second.txInValue;
-        posMin = posAverage / 100;
-        for (auto it = statSourceData.rbegin(); it != statSourceData.rbegin() + 100; ++it)
-              posAverage += it->second.txInValue;
-        posMax = posAverage / 100;
-      } else {
-        posMin = statSourceData.front().second.txInValue;
-        posMax = statSourceData.back().second.txInValue;
-      }
-
-      if (statSourceData.size() % 2) {
-        posMedian = (statSourceData[int(statSourceData.size()/2)].second.txInValue + statSourceData[int(statSourceData.size()/2)-1].second.txInValue) / 2;
-      } else {
-        posMedian = statSourceData[int(statSourceData.size()/2)-1].second.txInValue;
       }
       block24hCount = statSourceData.size();
     }
