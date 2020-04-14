@@ -56,6 +56,7 @@ private:
     Ui::MasternodeList *ui;
     ClientModel *clientModel;
     WalletModel *walletModel;
+    CCriticalSection cs_stat
 
     // Protects tableWidgetMasternodes
     CCriticalSection cs_mnlist;
