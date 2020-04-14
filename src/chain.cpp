@@ -11,7 +11,7 @@ using namespace std;
  * CChain implementation
  */
 
-int64_t CChain::GetNetworkHashPS(int lookup, int height)
+/* int64_t CChain::GetNetworkHashPS(int lookup, int height)
 {
     CBlockIndex *pb = this->Tip();
 
@@ -44,7 +44,7 @@ int64_t CChain::GetNetworkHashPS(int lookup, int height)
     int64_t timeDiff = maxTime - minTime;
 
     return workDiff.getdouble() / timeDiff;
-}
+}   */
 
 
 void CChain::SetTip(CBlockIndex *pindex) {
