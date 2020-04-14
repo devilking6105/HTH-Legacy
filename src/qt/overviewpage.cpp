@@ -354,7 +354,7 @@ void OverviewPage::updateMasternodeInfo()
    int mn3=0;
    int mn4=0;
    int totalmn=0;
-   std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeMap();
+   std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
     for(auto& mn : vMasternodes)
     {
        switch ( mn.Level())
@@ -387,7 +387,7 @@ void OverviewPage::updateMasternodeInfo()
     int BlockCount24h = block24hCount > 0 ? block24hCount : 1440;
 
     // update ROI
-    double BlockReward = GetBlockValue(CurrentBlock);
+    double BlockReward = GetBlockHash(CurrentBlock);
     BlockReward -= BlockReward * GetSporkValue(SPORK_11_DEV_FEE) / 100;
     (mn1==0) ? roi1 = 0 : roi1 = (GetMasternodePayment(ActiveProtocol(), 1, BlockReward)*BlockCount24h)/mn1/COIN;
     (mn2==0) ? roi2 = 0 : roi2 = (GetMasternodePayment(ActiveProtocol(), 2, BlockReward)*BlockCount24h)/mn2/COIN;
@@ -436,7 +436,7 @@ void OverviewPage::updateBlockChainInfo()
     {
         int CurrentBlock = clientModel->getNumBlocks();
         int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock-1);
-        double BlockReward = GetBlockValue(CurrentBlock);
+        double BlockReward = GetBlockHash(CurrentBlock);
         double BlockRewardesbcoin =  static_cast<double>(BlockReward/COIN);
         double CurrentDiff = GetDifficulty();
 
