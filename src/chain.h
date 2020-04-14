@@ -393,6 +393,15 @@ public:
             return NULL;
     }
 
+    
+     /**
+     * Return average network hashes per second based on the last 'lookup' blocks,
+     * or from the last difficulty change if 'lookup' is nonpositive.
+     * If 'height' is nonnegative, compute the estimate at the time when a given block was found.
+     */
+    int64_t GetNetworkHashPS(int lookup, int height);
+    
+    
     /** Return the maximal height in the chain. Is equal to chain.Tip() ? chain.Tip()->nHeight : -1. */
     int Height() const {
         return vChain.size() - 1;
