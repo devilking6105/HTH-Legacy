@@ -337,30 +337,6 @@ void OverviewPage::updateAlerts(const QString& warnings)
   //  this->ui->labelAlerts->setText(warnings);
 }
 
-   
-      /**** Blockchain Information ****/
-
-void OverviewPage::updateBlockChainInfo()
-{
-    if (masternodeSync.IsBlockchainSynced())
-    {
-        int CurrentBlock = clientModel->getNumBlocks();
-        
-        double CurrentDiff = GetDifficulty();
-
-        ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
-
-        ui->label_Nethash->setText(tr("Difficulty:"));
-        ui->label_Nethash_value->setText(QString::number(CurrentDiff,'f',4));
-       /* ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin)/COIN,'f',1).append(" | ") + QString::number(static_cast<double>(posMax)/COIN,'f',1));
-        ui->label_24hPoSMedian_value->setText(QString::number(static_cast<double>(posMedian)/COIN,'f',1)); */ // PoS Not Used Here
-    }
-}
-
-     /**** End Blockchain Inormation ****/
-
-
-
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
