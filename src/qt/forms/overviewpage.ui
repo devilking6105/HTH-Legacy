@@ -6,19 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>960</width>
-    <height>772</height>
+    <width>1000</width>
+    <height>829</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>960</width>
+    <width>1000</width>
     <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>960</width>
+    <width>1000</width>
     <height>16777215</height>
    </size>
   </property>
@@ -958,15 +964,15 @@ background-color: transparent;</string>
       <widget class="QPushButton" name="pushButton_Website_4">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>200</x>
          <y>50</y>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </size>
        </property>
@@ -991,13 +997,13 @@ background-color: transparent;</string>
         <rect>
          <x>10</x>
          <y>50</y>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </size>
        </property>
@@ -1026,15 +1032,15 @@ background-color: transparent;</string>
       <widget class="QPushButton" name="pushButton_Website">
        <property name="geometry">
         <rect>
-         <x>420</x>
+         <x>390</x>
          <y>50</y>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </size>
        </property>
@@ -1057,15 +1063,15 @@ background-color: transparent;</string>
       <widget class="QPushButton" name="pushButton_Website_2">
        <property name="geometry">
         <rect>
-         <x>630</x>
+         <x>580</x>
          <y>50</y>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </size>
        </property>
@@ -1088,15 +1094,15 @@ background-color: transparent;</string>
       <widget class="QPushButton" name="pushButton_Website_3">
        <property name="geometry">
         <rect>
-         <x>830</x>
+         <x>780</x>
          <y>50</y>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>150</width>
          <height>30</height>
         </size>
        </property>
@@ -1120,10 +1126,10 @@ background-color: transparent;</string>
      <widget class="QFrame" name="frame_4">
       <property name="geometry">
        <rect>
-        <x>-1</x>
+        <x>0</x>
         <y>650</y>
         <width>941</width>
-        <height>101</height>
+        <height>151</height>
        </rect>
       </property>
       <property name="frameShape">
