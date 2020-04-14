@@ -2131,3 +2131,116 @@ QStatusBar QLabel {
         border: 1px solid;
         border-color: #4D458C;
     }
+
+
+
+
+
+   				/****** Blockchain Information Area ********/
+
+
+/********************* Masternodes *********************/
+
+    QWidget#infoWidget {  /*bottom frame 1 - info */
+        background-color: #1e1d32;
+        alternate-background-color: #1e1d32;
+        border:1px solid;
+        border-color: #4D458C;
+    }
+
+    QWidget .QFrame#frameMnInfo {
+        border-style: 0px;
+     }
+
+     QWidget .QFrame#frameMnInfoLevels {
+        border-style: 0px;
+        border-top: 1px solid #4D458C;
+        border-top-color: qlineargradient(x1:0,y1:0,x2:1,y2:0,
+        stop:0 #1e1d32
+        stop:0.2 #4D458C
+        stop:0.8 #4D458C
+        stop:1 #1e1d32);
+     }
+
+     QWidget .QFrame#frameBlockchainInfo{
+        border-style: 0px;
+     }
+
+      QWidget .QFrame#frameBlockchainInfoData{
+        border-style: 0px;
+        border-top: 1px solid #4D458C;
+        border-top-color: qlineargradient(x1:0,y1:0,x2:1,y2:0,
+        stop:0 #1e1d32
+        stop:0.2 #4D458C
+        stop:0.8 #4D458C
+        stop:1 #1e1d32);
+     }
+
+
+    QWidget .QProgressBar#graphMN1 {
+        color: #ffffff;
+        border: 0px solid;
+        border-color: #4D458C;
+    /*    border-left:1px solid #4D458C;
+        border-radius:0px;*/
+        background-color:transparent;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    QWidget QProgressBar#graphMN1::chunk {
+        background-color:#64a19d;
+        width: 5px;
+    }
+
+    QWidget QProgressBar#graphMN2 {
+        color: #ffffff;
+        border: 0px solid;
+        border-color: #4D458C;
+    /*    border-left:1px solid #4D458C;
+        border-radius:0px;*/
+        background-color:transparent;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    QWidget QProgressBar#graphMN2::chunk {
+        background-color:#4D458C;
+        width: 5px;
+    }
+
+    QWidget QProgressBar#graphMN3 {
+        color: #ffffff;
+        border: 0px solid;
+        border-color: #4D458C;
+    /*    border-left:1px solid #4D458C;
+        border-radius:1px; */
+        background-color:transparent;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    QWidget QProgressBar#graphMN3::chunk {
+        background-color:#C26C47;
+        width: 5px;
+    }
+
+    QWidget QProgressBar#graphMN4 {
+        color: #ffffff;
+        border: 0px solid;
+        border-color: #4D458C;
+    /*    border-left:1px solid #4D458C;
+        border-radius:1px; */
+        background-color:transparent;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    QWidget QProgressBar#graphMN4::chunk {
+        background-color:#D1B475;
+        width: 5px;
+    }
+
+		/******* End Blockchain Information Area ******/
+
+
