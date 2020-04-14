@@ -39,9 +39,9 @@ enum NumConnections {
 };
 
 extern CCriticalSection cs_stat;
-extern std::map<std::string, qCount> masternodeRewards;
+extern std::map<std::string, CAmount> masternodeRewards;
 extern int block24hCount;
-extern qCount lockedCoin;
+extern CAmount lockedCoin;
 extern double roi1, roi2, roi3, roi4;
 
 /** Model for HTH network client. */
