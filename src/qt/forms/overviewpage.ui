@@ -1141,9 +1141,9 @@ background-color: transparent;</string>
       <widget class="QFrame" name="frameBlockchainInfo_2">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>0</x>
          <y>0</y>
-         <width>451</width>
+         <width>951</width>
          <height>131</height>
         </rect>
        </property>
@@ -1206,8 +1206,8 @@ background-color: transparent;</string>
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
-           <item row="1" column="1">
-            <widget class="QLabel" name="label_CurrentBlockReward_value_3">
+           <item row="3" column="5" alignment="Qt::AlignRight">
+            <widget class="QLabel" name="label_Nethash_value_3">
              <property name="text">
               <string>0</string>
              </property>
@@ -1216,51 +1216,17 @@ background-color: transparent;</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_CurrentBlock_value_3">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>130</width>
-               <height>16777215</height>
-              </size>
-             </property>
+           <item row="3" column="4">
+            <widget class="QLabel" name="label_Nethash_3">
              <property name="text">
-              <string>0</string>
+              <string>Nethash MHs:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
-            <widget class="QLabel" name="label_24hBlock_value_3">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>100</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>-</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="label_CurrentBlock_3">
              <property name="minimumSize">
               <size>
@@ -1282,7 +1248,29 @@ background-color: transparent;</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_CurrentBlock_value_3">
+             <property name="minimumSize">
+              <size>
+               <width>110</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>130</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
             <widget class="QLabel" name="label_spacer_3">
              <property name="minimumSize">
               <size>
@@ -1301,29 +1289,7 @@ background-color: transparent;</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="label_24hBlock_3">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>130</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Block count:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
+           <item row="3" column="2">
             <widget class="QLabel" name="label_CurrentBlockReward_3">
              <property name="text">
               <string>Reward:</string>
@@ -1333,18 +1299,8 @@ background-color: transparent;</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="3">
-            <widget class="QLabel" name="label_Nethash_3">
-             <property name="text">
-              <string>Nethash MHs:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QLabel" name="label_Nethash_value_3">
+           <item row="3" column="3">
+            <widget class="QLabel" name="label_CurrentBlockReward_value_3">
              <property name="text">
               <string>0</string>
              </property>
