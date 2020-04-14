@@ -447,7 +447,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QFrame" name="frame_2">
+        <widget class="QFrame" name="frame_logo">
          <property name="minimumSize">
           <size>
            <width>345</width>
