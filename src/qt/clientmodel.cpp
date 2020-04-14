@@ -100,9 +100,9 @@ void ClientModel::update24hStatsTimer()
     int currentBlock = pblockindex->nHeight;
     // read block from last to last scaned
     while (pblockindex->nHeight > blockLast) {
-        else
+       if
           // store block stat
-           statSourceData.push_back( make_pair(pblockindex->nHeight, blockStat) );
+           statSourceData.push_back( make_pair(pblockindex->nHeight) );
           // stop if blocktime over 24h past
         if ( (block.nTime + 24*60*60) < syncStartTime ) {
                blockOldest = pblockindex->nHeight;
@@ -111,7 +111,7 @@ void ClientModel::update24hStatsTimer()
                     }
                 }
             }
-        }
+        
         // select next (previous) block
         pblockindex = pblockindex->pprev;
     }
