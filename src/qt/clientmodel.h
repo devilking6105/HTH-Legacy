@@ -38,11 +38,6 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-extern CCriticalSection cs_stat;
-extern std::map<std::string, CAmount> masternodeRewards;
-extern int block24hCount;
-extern double roi1, roi2, roi3, roi4;
-
 /** Model for HTH network client. */
 class ClientModel : public QObject
 {
@@ -94,7 +89,6 @@ private:
 
     QTimer *pollTimer;
     QTimer *pollMnTimer;
-    QTimer* poll24hStatsTimer;
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
@@ -107,7 +101,6 @@ Q_SIGNALS:
     void mempoolSizeChanged(long count, size_t mempoolSizeInBytes);
     void alertsChanged(const QString &warnings);
     void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
-    void stats24hUpdated();
 
     //! Fired when a message should be reported to the user
     void message(const QString &title, const QString &message, unsigned int style);
@@ -121,7 +114,6 @@ public Q_SLOTS:
     void updateNumConnections(int numConnections);
     void updateAlert(const QString &hash, int status);
     void updateBanlist();
-    void update24hStatsTimer();
 };
 
 #endif // BITCOIN_QT_CLIENTMODEL_H
