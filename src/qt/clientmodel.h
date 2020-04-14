@@ -38,6 +38,15 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
+extern CCriticalSection cs_stat;
+extern std::map<std::string, CAmount> masternodeRewards;
+extern CAmount;
+extern int block24hCount;
+extern CAmount lockedCoin;
+extern double roi1, roi2, roi3, roi4;
+
+
+
 /** Model for HTH network client. */
 class ClientModel : public QObject
 {
