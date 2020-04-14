@@ -21,7 +21,7 @@
 #include "walletmodel.h"
 #include "main.h"
 #include "masternodeman.h"
-#include "chaninparams.h"
+#include "chainparams.h"
 #include "main.h"
 #include "amount.h"
 #include "addressbookpage.h"
