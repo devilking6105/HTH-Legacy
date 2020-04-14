@@ -183,7 +183,37 @@ void MasternodeList::updateMyMasternodeInfo(QString strAlias, QString strAddr, m
         nNewRow = ui->tableWidgetMyMasternodes->rowCount();
         ui->tableWidgetMyMasternodes->insertRow(nNewRow);
     }
+    
+    std::string mnLevelText = "";
+    double tLuck = 0;
+    CAmount masternodeCoins = 0;
+    std::string pubkey = "";
 
+    if (pmn) {
+        pubkey = CBitcoinAddress(pmn->pubKeyCollateralAddress.GetID()).ToString();
+        {
+            LOCK(cs_stat);
+            qDebug() << __FUNCTION__ << ": LOCK(cs_stat)";
+
+            auto it = masternodeRewards.find(pubkey);
+            if (it != masternodeRewards.end())
+                masternodeCoins = (*it).second;
+        }
+
+        switch (pmn->Level())
+        {
+            case 1: mnLevelText = "Bronze"; if (roi1 > 1) tLuck = ((masternodeCoins/COIN) / roi1)*100; break;
+            case 2: mnLevelText = "Silver"; if (roi2 > 1) tLuck = ((masternodeCoins/COIN) / roi2)*100; break;
+            case 3: mnLevelText = "Gold"; if (roi3 > 1) tLuck = ((masternodeCoins/COIN) / roi3)*100; break;
+            case 4: mnLevelText = "Platinum"; if (roi4 > 1) tLuck = ((masternodeCoins/COIN) / roi4)*100; break;
+        }
+    }
+
+    
+    //    QTableWidgetItem* levelItem = new QTableWidgetItem(QString::number(pmn ? pmn->Level() : 0u));
+    QTableWidgetItem* levelItem = new QTableWidgetItem(QString::fromStdString(mnLevelText));
+    
+    
     QTableWidgetItem *aliasItem = new QTableWidgetItem(strAlias);
     QTableWidgetItem *addrItem = new QTableWidgetItem(infoMn.fInfoValid ? QString::fromStdString(infoMn.addr.ToString()) : strAddr);
     QTableWidgetItem *protocolItem = new QTableWidgetItem(QString::number(infoMn.fInfoValid ? infoMn.nProtocolVersion : -1));
@@ -264,6 +294,33 @@ void MasternodeList::updateNodeList()
     ui->tableWidgetMasternodes->clearContents();
     ui->tableWidgetMasternodes->setRowCount(0);
     std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+    
+    std::string mnLevelText = "";
+
+    for(auto& mn : vMasternodes)
+    {
+        // populate list
+        // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
+        QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
+
+        double tLuck = 0;
+        CAmount masternodeCoins = 0;
+        std::string pubkey = CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString();
+        auto it = masternodeRewards.find(pubkey);
+        if (it != masternodeRewards.end())
+            masternodeCoins = (*it).second;
+
+        switch (mn.Level())
+        {
+            case 1: mnLevelText = "Bronze"; if (roi1 > 1) tLuck = ((masternodeCoins/COIN) / roi1)*100; break;
+            case 2: mnLevelText = "Silver"; if (roi2 > 1) tLuck = ((masternodeCoins/COIN) / roi2)*100; break;
+            case 3: mnLevelText = "Gold"; if (roi3 > 1) tLuck = ((masternodeCoins/COIN) / roi3)*100; break;
+            case 4: mnLevelText = "Platinum"; if (roi4 > 1) tLuck = ((masternodeCoins/COIN) / roi4)*100; break;
+        }
+
+        
+       //    QTableWidgetItem* levelItem = new QTableWidgetItem(QString::number(pmn ? pmn->Level() : 0u));
+    QTableWidgetItem* levelItem = new QTableWidgetItem(QString::fromStdString(mnLevelText));
 
     BOOST_FOREACH(CMasternode& mn, vMasternodes)
     {
@@ -289,6 +346,7 @@ void MasternodeList::updateNodeList()
 
         ui->tableWidgetMasternodes->insertRow(0);
         ui->tableWidgetMasternodes->setItem(0, 0, addressItem);
+        ui->tableWidgetMasternodes->setItem(0, 1, levelItem);
         ui->tableWidgetMasternodes->setItem(0, 1, protocolItem);
         ui->tableWidgetMasternodes->setItem(0, 2, statusItem);
         ui->tableWidgetMasternodes->setItem(0, 3, activeSecondsItem);
