@@ -34,20 +34,6 @@ class CBlockIndex;
 static const int64_t nClientStartupTime = GetTime();
 static int64_t nLastBlockTipUpdateNotification = 0;
 
-struct statElement {
-  uint32_t blockTime; // block time
-  CAmount txInValue; // pos input value
-  std::vector<std::pair<std::string, CAmount>> mnPayee; // masternode payees
-};
-static int blockOldest = 0;
-static int blockLast = 0;
-static std::vector<std::pair<int, statElement>> statSourceData;
-
-CCriticalSection cs_stat;
-map<std::string, CAmount> masternodeRewards;
-int block24hCount;
-CAmount lockedCoin;
-
 ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
     QObject(parent),
     optionsModel(optionsModel),
@@ -74,89 +60,6 @@ ClientModel::~ClientModel()
 {
     unsubscribeFromCoreSignals();
 }
-
-
-void ClientModel::update24hStatsTimer()
-{
-  // Get required lock upfront. This avoids the GUI from getting stuck on
-  // periodical polls if the core is holding the locks for a longer time -
-  // for example, during a wallet rescan.
-  TRY_LOCK(cs_main, lockMain);
-  if (!lockMain) return;
-
-  TRY_LOCK(cs_stat, lockStat);
-  if (!lockStat) return;
-
-  if (masternodeSync.IsBlockchainSynced() && !IsInitialBlockDownload()) {
-    qDebug() << __FUNCTION__ << ": Process stats...";
-    const int64_t syncStartTime = GetTime();
-
-    CBlock block;
-    CBlockIndex* pblockindex = mapBlockIndex[chainActive.Tip()->GetBlockHash()];
-
-    CTxDestination Dest;
-    CBitcoinAddress Address;
-
-    int currentBlock = pblockindex->nHeight;
-    // read block from last to last scaned
-    while (pblockindex->nHeight > blockLast) {
-       if
-          // store block stat
-           statSourceData.push_back( make_pair(pblockindex->nHeight) );
-          // stop if blocktime over 24h past
-        if ( (block.nTime + 24*60*60) < syncStartTime ) {
-               blockOldest = pblockindex->nHeight;
-                   break;
-                        }
-                    }
-                }
-            }
-        
-        // select next (previous) block
-        pblockindex = pblockindex->pprev;
-    }
-
-    // clear over 24h block data
-    std::vector<pair<std::string, CAmount>> tMN;
-    std::string tAddress;
-    CAmount tValue;
-    if (statSourceData.size() > 0) {
-        for (auto it = statSourceData.rbegin(); it != statSourceData.rend(); ++it) {
-            if ( (it->second.blockTime + 24*60*60) < syncStartTime) {
-                tMN = it->second.mnPayee;
-                for (auto im = tMN.begin(); im != tMN.end(); ++im) {
-                    tAddress = im->first;
-                    tValue = im->second;
-                    masternodeRewards[tAddress] -= tValue;
-                }
-                // remove element
-                *it = statSourceData.back();
-                statSourceData.pop_back();
-            }
-        }
-    }
-
-    // recalc stats data if new block found
-    if (currentBlock > blockLast && statSourceData.size() > 0) {
-      // sorting vector and get stats values
-      sort(statSourceData.begin(), statSourceData.end(), sortStat);
-
-      }
-      block24hCount = statSourceData.size();
-    }
-
-    blockLast = currentBlock;
-
-    if (poll24hStatsTimer->interval() < 30000)
-        poll24hStatsTimer->setInterval(30000);
-
-    qDebug() << __FUNCTION__ << ": Stats ready...";
-  }
-
-  // sending signal
-  //emit stats24hUpdated();
-}
-
 
 int ClientModel::getNumConnections(unsigned int flags) const
 {
