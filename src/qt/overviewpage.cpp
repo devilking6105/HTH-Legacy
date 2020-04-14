@@ -345,8 +345,6 @@ void OverviewPage::updateBlockChainInfo()
     if (masternodeSync.IsBlockchainSynced())
     {
         int CurrentBlock = clientModel->getNumBlocks();
-        int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock-1);
-        double BlockReward = GetBlockHash(CurrentBlock);
         double BlockRewardesbcoin =  static_cast<double>(BlockReward/COIN);
         double CurrentDiff = GetDifficulty();
 
@@ -354,12 +352,6 @@ void OverviewPage::updateBlockChainInfo()
 
         ui->label_Nethash->setText(tr("Difficulty:"));
         ui->label_Nethash_value->setText(QString::number(CurrentDiff,'f',4));
-
-        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardesbcoin, 'f', 1).append(" | ") + QString::number(GetSporkValue(SPORK_11_DEV_FEE)).append("%"));
-
-        ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" HTH"));
-
-        ui->label_24hBlock_value->setText(QString::number(block24hCount));
        /* ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin)/COIN,'f',1).append(" | ") + QString::number(static_cast<double>(posMax)/COIN,'f',1));
         ui->label_24hPoSMedian_value->setText(QString::number(static_cast<double>(posMedian)/COIN,'f',1)); */ // PoS Not Used Here
     }
