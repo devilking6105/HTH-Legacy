@@ -443,8 +443,8 @@ void OverviewPage::updateBlockChainInfo()
         ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" HTH"));
 
         ui->label_24hBlock_value->setText(QString::number(block24hCount));
-        ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin)/COIN,'f',1).append(" | ") + QString::number(static_cast<double>(posMax)/COIN,'f',1));
-        ui->label_24hPoSMedian_value->setText(QString::number(static_cast<double>(posMedian)/COIN,'f',1));
+       /* ui->label_24hPoS_value->setText(QString::number(static_cast<double>(posMin)/COIN,'f',1).append(" | ") + QString::number(static_cast<double>(posMax)/COIN,'f',1));
+        ui->label_24hPoSMedian_value->setText(QString::number(static_cast<double>(posMedian)/COIN,'f',1)); */ // PoS Not Used Here
     }
 }
 
