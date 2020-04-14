@@ -345,7 +345,7 @@ void OverviewPage::updateBlockChainInfo()
     if (masternodeSync.IsBlockchainSynced())
     {
         int CurrentBlock = clientModel->getNumBlocks();
-        double BlockRewardesbcoin =  static_cast<double>(BlockReward/COIN);
+        
         double CurrentDiff = GetDifficulty();
 
         ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
