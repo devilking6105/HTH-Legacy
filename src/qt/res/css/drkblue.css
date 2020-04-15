@@ -469,7 +469,7 @@ font-weight: bold;
         border-color: #4D458C;
         padding-right:1px;
         padding-left:1px;
-        color:#7E7E7E;
+        color:#34bcaa;
     }
 
     QComboBox QAbstractItemView::item {
@@ -1158,7 +1158,7 @@ QStatusBar QLabel {
     QStackedWidget#SendCoinsEntry .QToolButton#pasteButton:hover {
       background-color:#1e1d32;
       border-radius: 5px;
-      color:#23bcaa;
+      color:#34bcaa;
     }
 
     QStackedWidget#SendCoinsEntry .QToolButton#pasteButton:pressed {
